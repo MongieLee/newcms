@@ -1,25 +1,25 @@
 <template>
-  <div class="container">
-    <PageHeader :title="'ceshi'"></PageHeader>
-
-    <div>
-      <span class="green">珠海百智科技</span>
-      <span class="grey">公司管理系统</span>
-      <p class="en">CMS (Company Management System)</p>
-      <hr />
-      <div class="mg-s">
-        点击<span>服务</span>按钮查看系统后台服务运行状态。
+  <PageLayout :title="'数据看板'">
+    <div class="container">
+      <div>
+        <span class="green">珠海百智科技</span>
+        <span class="grey">公司管理系统</span>
+        <p class="en">CMS (Company Management System)</p>
+        <hr />
+        <div class="mg-s">
+          点击<span>服务</span>按钮查看系统后台服务运行状态。
+        </div>
+        <button @click="toService" class="service-btn">服务</button>
       </div>
-      <button @click="toService" class="service-btn">服务</button>
     </div>
-  </div>
+  </PageLayout>
 </template>
 
 <script>
-import PageHeader from "./PageHeader.vue";
+import PageLayout from "./PageLayout.vue";
 export default {
   components: {
-    PageHeader,
+    PageLayout,
   },
   methods: {
     toService() {
@@ -44,7 +44,6 @@ export default {
 }
 .container {
   flex-direction: column;
-  margin: 6px;
   background: #e9ecef;
   height: 360px;
   border-radius: 8px;

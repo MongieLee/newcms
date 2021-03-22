@@ -1,81 +1,71 @@
 <template>
-  <Tabs style="height: 100; margin: 6px">
-    <TabPanel
-      title="用户"
-      :bodyStyle="{ display: 'flex', flexDirection: 'column' }"
-    >
-      <div
-        :style="{
-          margin: '8px',
-          display: 'flex',
-          flexDirection: 'column',
-          flex: 1,
-        }"
-      >
-        <div class="tools-bar">
-          <div class="tool-item">
-            <span>代码：</span>
-            <TextBox placeholder="请输入查询条件"></TextBox>
-          </div>
-          <div class="tool-item">
-            <span>名称：</span>
-            <TextBox placeholder="请输入查询条件"></TextBox>
-          </div>
-          <div class="tool-item">
-            <LinkButton iconCls="icon-search" :plain="true">查询</LinkButton>
-          </div>
-          <div class="tool-item">
-            <ComboGrid
-              style="width: 300px"
-              valueField="id"
-              textField="name"
-              v-model="value"
-              :data="data"
-              :textFormatter="formatText"
-              :panelStyle="{ width: '500px' }"
-            >
-              <DataGrid
-                :lazy="true"
-                slot="grid"
-                pagination
-                :border="false"
-                :pageNumber="pageNumber"
-                :loading="loading"
-                :pageSize="pageSize"
-                :total="total"
-                :pageLayout="layout1"
-                @pageChange="onPageChange($event)"
-                @sortChange="fuck($event)"
-              >
-                <GridColumn sortable field="id" title="Item ID"></GridColumn>
-                <GridColumn
-                  sortable
-                  field="name"
-                  title="Name"
-                  width="30%"
-                ></GridColumn>
-                <GridColumn
-                  sortable
-                  field="inv"
-                  title="inv"
-                  align="right"
-                ></GridColumn>
-                <GridColumn
-                  sortable
-                  field="amount"
-                  title="amount"
-                  align="right"
-                ></GridColumn>
-                <GridColumn
-                  sortable
-                  field="price"
-                  title="price"
-                  align="center"
-                ></GridColumn>
-              </DataGrid>
-            </ComboGrid>
-          </div>
+  <PageLayout title="用户">
+    <div class="content-item">
+      <div class="tools-bar">
+        <div class="tool-item">
+          <span>代码：</span>
+          <TextBox placeholder="请输入查询条件"></TextBox>
         </div>
+        <div class="tool-item">
+          <span>名称：</span>
+          <TextBox placeholder="请输入查询条件"></TextBox>
+        </div>
+        <div class="tool-item">
+          <LinkButton iconCls="icon-search" :plain="true">查询</LinkButton>
+        </div>
+        <div class="tool-item">
+          <ComboGrid
+            style="width: 300px"
+            valueField="id"
+            textField="name"
+            v-model="value"
+            :data="data"
+            :textFormatter="formatText"
+            :panelStyle="{ width: '500px' }"
+          >
+            <DataGrid
+              :lazy="true"
+              slot="grid"
+              pagination
+              :border="false"
+              :pageNumber="pageNumber"
+              :loading="loading"
+              :pageSize="pageSize"
+              :total="total"
+              :pageLayout="layout1"
+              @pageChange="onPageChange($event)"
+              @sortChange="fuck($event)"
+            >
+              <GridColumn sortable field="id" title="Item ID"></GridColumn>
+              <GridColumn
+                sortable
+                field="name"
+                title="Name"
+                width="30%"
+              ></GridColumn>
+              <GridColumn
+                sortable
+                field="inv"
+                title="inv"
+                align="right"
+              ></GridColumn>
+              <GridColumn
+                sortable
+                field="amount"
+                title="amount"
+                align="right"
+              ></GridColumn>
+              <GridColumn
+                sortable
+                field="price"
+                title="price"
+                align="center"
+              ></GridColumn>
+            </DataGrid>
+          </ComboGrid>
+        </div>
+      </div>
+      <div class="datagrid-wrapper">
         <DataGrid
           selectionMode="single"
           :data="data"
@@ -132,21 +122,23 @@
           ></GridColumn>
         </DataGrid>
       </div>
+    </div>
 
-      <div style="height: 300px">
-        <div class="tools-bar">
-          <div class="tool-item">
-            <span>代码：</span>
-            <TextBox placeholder="请输入查询条件"></TextBox>
-          </div>
-          <div class="tool-item">
-            <span>名称：</span>
-            <TextBox placeholder="请输入查询条件"></TextBox>
-          </div>
-          <div class="tool-item">
-            <LinkButton iconCls="icon-search" :plain="true">查询</LinkButton>
-          </div>
+    <div class="content-item2">
+      <div class="tools-bar">
+        <div class="tool-item">
+          <span>代码：</span>
+          <TextBox placeholder="请输入查询条件"></TextBox>
         </div>
+        <div class="tool-item">
+          <span>名称：</span>
+          <TextBox placeholder="请输入查询条件"></TextBox>
+        </div>
+        <div class="tool-item">
+          <LinkButton iconCls="icon-search" :plain="true">查询</LinkButton>
+        </div>
+      </div>
+      <div class="datagrid-wrapper">
         <DataGrid
           selectionMode="single"
           :data="data"
@@ -201,13 +193,17 @@
             align="center"
           ></GridColumn>
         </DataGrid>
-      </div> </TabPanel
-  ></Tabs>
+      </div>
+    </div>
+  </PageLayout>
 </template>
  
 <script>
+import PageLayout from "./PageLayout.vue";
+
 export default {
-  name: "fuck",
+  components: { PageLayout },
+  name: "User",
   mounted() {},
   data() {
     return {
@@ -345,9 +341,32 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.tools-bar {
+.content-item {
+  flex-grow: 1;
   display: flex;
-  margin-bottom: 8px;
+  flex-direction: column;
+  .datagrid-wrapper {
+    flex-grow: 1;
+    overflow: auto;
+  }
+}
+.content-item2 {
+  min-height: 380px;
+  display: flex;
+  flex-direction: column;
+  .datagrid-wrapper:first-child {
+    flex-grow: 1.1;
+    overflow: auto;
+  }
+  .datagrid-wrapper:last-child {
+    flex-grow: 1;
+    overflow: auto;
+  }
+}
+.tools-bar {
+  height: 40px;
+  margin: 2px;
+  display: flex;
   .tool-item {
     span {
       margin-right: 8px;

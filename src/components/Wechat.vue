@@ -71,7 +71,7 @@
 </template>
  
 <script>
-import PageHeader from "./PageHeader.vue";
+import PageHeader from "./PageLayout.vue";
 export default {
   components: {
     PageHeader,
