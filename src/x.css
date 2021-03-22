@@ -1,0 +1,35 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.sidemenu .accordion .accordion-header {
+  background: #222d32;
+  color: #b8c7ce;
+}
+
+.sidemenu .accordion .panel-title {
+  color: #b8c7ce;
+}
+
+.sidemenu .tree-node-selected {
+  background: #2c3b41;
+  color: #fff;
+}
+
+.sidemenu .accordion .accordion-body {
+  background: #2c3b41;
+  color: #8aa4af;
+}
+
+.sidemenu .tree-node-hover {
+  color: #0E2D5f;
+  background: #eaf2ff;
+}
+
+button {
+  outline: none;
+}
+
+:focus{ outline: none; } 
