@@ -15,7 +15,6 @@
         </div>
         <div class="tool-item">
           <ComboGrid
-            style="width: 300px"
             valueField="id"
             textField="name"
             v-model="value"
@@ -67,6 +66,7 @@
       </div>
       <div class="datagrid-wrapper">
         <DataGrid
+          style="height: 400px; border: 1px solid red"
           selectionMode="single"
           :data="data"
           :style="{ flex: 1 }"
@@ -140,6 +140,7 @@
       </div>
       <div class="datagrid-wrapper">
         <DataGrid
+          style="height: 300px"
           selectionMode="single"
           :data="data"
           :lazy="true"
@@ -346,27 +347,19 @@ export default {
   display: flex;
   flex-direction: column;
   .datagrid-wrapper {
-    flex-grow: 1;
+    min-height: 200px;
     overflow: auto;
   }
 }
 .content-item2 {
-  min-height: 380px;
   display: flex;
   flex-direction: column;
-  .datagrid-wrapper:first-child {
-    flex-grow: 1.1;
-    overflow: auto;
-  }
-  .datagrid-wrapper:last-child {
-    flex-grow: 1;
-    overflow: auto;
-  }
 }
 .tools-bar {
   height: 40px;
   margin: 2px;
   display: flex;
+  align-items: center;
   .tool-item {
     span {
       margin-right: 8px;

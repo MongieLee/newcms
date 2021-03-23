@@ -43,6 +43,7 @@ export default {
   }
 }
 .container {
+  margin-top: 6px;
   flex-direction: column;
   background: #e9ecef;
   height: 360px;
